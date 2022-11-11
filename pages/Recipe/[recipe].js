@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Header from '../../components/Header'
 import Similar from '../../components/Similar'
+import {HeartIcon} from "@heroicons/react/outline"
+import {HeartIcon as Heart} from "@heroicons/react/solid"
+import { useSession } from 'next-auth/react'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 function Recipe() {
-
+    const [like, setLike] = useState(false)
+    const { data: session } = useSession()
     const router = useRouter()
     let params  = router.query
     const [detail, setDetail]= useState([])
@@ -13,22 +19,39 @@ function Recipe() {
     const fetchDetail = async() =>{
         const data = await fetch(`https://api.spoonacular.com/recipes/${params.recipe}/information?apiKey=377fedd8a7674309a40704af3a9a70ce`)
         const detail = await data.json()
-        console.log(detail)
         setDetail(detail)
     }
 
     useEffect(()=>{
         fetchDetail()
-
     }, [params.recipe])
+
+    const addLike = async () => {
+        setLike(true)
+        const docRef = await addDoc(collection(db, 'likedRecipes', session.user.username, detail?.id), {
+            recipe: detail,
+            like : true
+        })
+    }
 
   return (
     <div>
         <Header/>
 
         <div className='mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8'>
-            <div>
-                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight my-auto">{detail.title}</h2>
+            <div className='flex gap-2'>
+                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight my-auto">
+                    {detail.title}
+                </h2>
+                {like? (
+                    <Heart 
+                    
+                    className='w-10 h-10 text-red-500'/>
+                ) : (
+                    <HeartIcon 
+                    onClick={addLike}
+                    className='w-10 h-10 cursor-pointer text-red-700 transition-all'/>
+                )}
                 
             </div>
             

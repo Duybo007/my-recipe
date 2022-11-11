@@ -36,7 +36,7 @@ function Popular() {
                         {popular.map((recipe)=> {
                             return(
                                 <SplideSlide key={recipe.id}>
-                                    <div className='card'>
+                                    <div className='card cursor-pointer'>
                                     <Link href={"/Recipe/"+ recipe.id}><div>
                                         
                                             <p className='title'>{recipe.title}</p>

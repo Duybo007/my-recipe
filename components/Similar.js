@@ -39,7 +39,7 @@ function Similar() {
             {similar.map((recipe)=> {
                 return(
                     <SplideSlide key={recipe.id}>
-                        <div className='card'>
+                        <div className='card  cursor-pointer'>
                             <Link href={"/Recipe/" +recipe.id}><div>
                                 <p className='title'>{recipe.title}</p>
                                 <img className='img_list' src={recipe.image} alt={recipe.title}/>
