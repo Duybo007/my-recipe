@@ -17,7 +17,7 @@ function Appetizer() {
         if(check){
             setAppetizer(JSON.parse(check))
         } else {
-            const res = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=377fedd8a7674309a40704af3a9a70ce&number=8&type=appetizer`)
+            const res = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=832d4a7e0e8e4b34add5c8bea50ecf0a&number=8&type=appetizer`)
             const data = await res.json()
             localStorage.setItem("appetizer", JSON.stringify(data.recipes))
             console.log(data)

@@ -28,7 +28,7 @@ function Header() {
   const {data: session} = useSession()
 
   return (
-    <div className='shadow-sm border-b bg-white sticky top-0 z-50'>
+    <div className='shadow-sm border-b bg-gray-800 sticky top-0 z-50'>
       <div className='flex justify-between max-w-6xl mx-5 xl:mx-auto'>
 
         {/* logo */}
@@ -64,15 +64,14 @@ function Header() {
         {/* right hand header */}
         <div className='flex items-center justify-end space-x-4'>
           
-          <Link href="/Cuisine"><p className='cursor-pointer hover:scale-125 transition transform duration-200 ease-out'>Recipe by Cuisine</p></Link>
-          <Link href={"/"}><HomeIcon className='navBtn'/></Link>
+          <Link href="/Cuisine"><p className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer'>Recipe by Cuisine</p></Link>
+          <Link href="/"><p className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer'>Home</p></Link>
           {session ? (
             <>
-            <MenuIcon className='h-6 md:hidden cursor-pointer'/>
-            <PlusCircleIcon onClick={()=> setOpen(true)} className='navBtn'/>
+            <p onClick={()=> setOpen(true)} className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer'>Add Post</p>
             <img onClick={signOut} src={session.user.image} alt='profice pic'
             className='h-10 w-10 rounded-full cursor-pointer'/>
-            <button className='cursor-pointer hover:scale-125 transition transform duration-200 ease-out' onClick={signOut}>Sign Out</button>
+            <button className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' onClick={signOut}>Sign Out</button>
             </>
           ) : (
             <button onClick={signIn}>Sign In</button>

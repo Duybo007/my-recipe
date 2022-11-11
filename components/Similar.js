@@ -18,7 +18,7 @@ function Similar() {
     const getSimilar = async () => {
 
 
-    const res = await fetch(`https://api.spoonacular.com/recipes/${params.recipe}/similar?apiKey=377fedd8a7674309a40704af3a9a70ce&number=9`)
+    const res = await fetch(`https://api.spoonacular.com/recipes/${params.recipe}/similar?apiKey=832d4a7e0e8e4b34add5c8bea50ecf0a&number=9`)
     const data = await res.json()
 
     setSimilar(data)
@@ -42,7 +42,7 @@ function Similar() {
                         <div className='card  cursor-pointer'>
                             <Link href={"/Recipe/" +recipe.id}><div>
                                 <p className='title'>{recipe.title}</p>
-                                <img className='img_list' src={recipe.image} alt={recipe.title}/>
+                                <img className='img_list' src="https://static.vecteezy.com/system/resources/thumbnails/001/842/936/small/dark-blue-background-in-polygonal-style-vector.jpg" alt={recipe.title}/>
                                 <div className='gradient'></div>
                             </div></Link>
                         </div>
