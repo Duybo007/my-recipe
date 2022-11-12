@@ -34,7 +34,7 @@ console.log(process.env.API_KEY)
 
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {appetizer.map((recipe) => (
-            <Link href={"/Recipe/"+recipe.id}><a key={recipe.id}  className="group">
+            <Link key={recipe.id} href={"/Recipe/"+recipe.id}><a key={recipe.id}  className="group">
               <div className="relative aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={recipe.image}
