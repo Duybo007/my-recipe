@@ -74,7 +74,7 @@ function Header() {
             <button className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' onClick={signOut}>Sign Out</button>
             </>
           ) : (
-            <button onClick={signIn}>Sign In</button>
+            <button className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' onClick={signIn}>Sign In</button>
           )}
           
         </div>
